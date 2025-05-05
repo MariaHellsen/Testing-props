@@ -6,8 +6,7 @@ import { AddPersons } from "./componenets/AddPerson";
 function App() {
   return (
     <>
-      {/* <PersonsApp /> */}
-      <AddPersons />
+      <PersonsApp />
     </>
   );
 }
