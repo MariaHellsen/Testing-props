@@ -1,8 +1,12 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { ShowPersons } from "./ShowPerson";
 import { Person } from "../models/Person";
 
-export const AddPersons = () => {
+type AddPersonProps = {
+  addPerson: (p: Person) => void;
+};
+
+export const AddPersons = (props: AddPersonProps) => {
   const [person, setPerson] = useState<Person>({
     id: 0,
     name: "",
@@ -24,9 +28,20 @@ export const AddPersons = () => {
     }
   };
 
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    props.addPerson(person);
+    console.log(person);
+    setPerson({
+      id: 0,
+      name: "",
+      age: 0,
+      happy: false,
+    });
+  };
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name:</label>
         <input
           type="text"
@@ -41,7 +56,7 @@ export const AddPersons = () => {
           value={person.age}
           onChange={handleChange}
         />
-        <label htmlFor="happy">Emotion:</label>
+        <label htmlFor="happy">Happy:</label>
         <input
           type="checkbox"
           id="happy"
