@@ -13,14 +13,16 @@ export const PersonsApp = () => {
     ]);
   };
 
-  const RemovePerson = () => {};
+  const removePerson = (id: number) => {
+    setPersons(persons.filter((p) => p.id !== id));
+  };
 
   console.log("Persons:", persons);
 
   return (
     <>
       <AddPersons addPerson={addPerson} />
-      <Persons />
+      <Persons persons={persons} removePerson={removePerson} />
     </>
   );
 };

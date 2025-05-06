@@ -1,5 +1,4 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { ShowPersons } from "./ShowPerson";
 import { Person } from "../models/Person";
 
 type AddPersonProps = {
@@ -65,7 +64,6 @@ export const AddPersons = (props: AddPersonProps) => {
         />
         <button>Spara</button>
       </form>
-      <ShowPersons />
     </>
   );
 };
